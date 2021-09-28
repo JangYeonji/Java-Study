@@ -10,6 +10,7 @@ public class Bonus {
 		final int target = 1000;
 		Scanner input = new Scanner(System.in);
 		System.out.print("내가 판매한 금액을 입력하세요: ");
+		//클래스명.변수.메소드명()
 		mysales = input.nextInt();
 
 		String result;
