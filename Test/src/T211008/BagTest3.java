@@ -1,0 +1,51 @@
+package T211008;
+
+class Bag3<T, N>{
+	private T thing;
+	private N name;
+	
+	public Bag3(T thing, N name) {
+		this.thing = thing;
+		this.name = name;
+	}
+	public T getThing() {
+		return thing;
+	}
+	public void setThing(T thing) {
+		this.thing = thing;
+	}
+	public N getName() {
+		return name;
+	}
+	public void setName(N name) {
+		this.name = name;
+	}
+	void showType() {
+		System.out.println("T의 타입은 " + thing.getClass().getName());
+		System.out.println("N의 타입은 " + name.getClass().getName());
+	}
+}
+class Book3{
+	public String toString() {
+		return "책";
+	}
+}
+class PencilCase3{
+	
+}
+class Notebook3{
+	
+}
+public class BagTest3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Bag3<Book3, String> bag = new Bag3<Book3, String>(new Book3(), "과학");
+		bag.showType();
+		Book3 book = bag.getThing();
+		String name = bag.getName();
+		
+		System.out.println("Thing is : " + book);
+	}
+
+}
