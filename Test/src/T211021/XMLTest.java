@@ -9,7 +9,8 @@ public class XMLTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-			URL url = new URL("http://openapi.seoul.go.kr:8088/6558674679686d703531554b686b76/xml/ListCultureAssetsInfo/1/200/");
+			URL url = new URL("http://www.cha.go.kr/cha/SearchKindOpenapiList.do");
+			//URL url = new URL("http://openapi.seoul.go.kr:8088/6558674679686d703531554b686b76/xml/ListCultureAssetsInfo/1/200/");   //공공데이터
 			InputStream stream = url.openStream();
 			char ch = 0;
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -17,16 +18,22 @@ public class XMLTest {
 			Document doc = dBuilder.parse(stream);
 			doc.getDocumentElement().normalize();
 			System.out.println("Root element: "+doc.getDocumentElement().getNodeName());
-			NodeList nList = doc.getElementsByTagName("row");
+			//NodeList nList = doc.getElementsByTagName("row");   //공공데이터
+			NodeList nList = doc.getElementsByTagName("item");
+			System.out.println("파싱할 리스트 수 : "+nList.getLength());
 			System.out.println("-----------------------------");
 			for(int temp=0;temp<nList.getLength();temp++) {
 				Node nNode = nList.item(temp);
 				if(nNode.getNodeType()==Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-					System.out.println("문화재 번호 : "+getTagValue("MANAGE_NUM",eElement));
-					System.out.println("문화재 이름 : "+getTagValue("NAME_KOR",eElement));
-					System.out.println("문화재 한자명 : "+getTagValue("NAME_CNI",eElement));
-					System.out.println("문화재 크기 : "+getTagValue("SCALE",eElement));
+//					System.out.println("문화재 번호 : "+getTagValue("MANAGE_NUM",eElement));
+//					System.out.println("문화재 이름 : "+getTagValue("NAME_KOR",eElement));
+//					System.out.println("문화재 한자명 : "+getTagValue("NAME_CNI",eElement));
+//					System.out.println("문화재 크기 : "+getTagValue("SCALE",eElement));
+					System.out.println("문화재 번호 : "+getTagValue("no",eElement));
+					System.out.println("문화재 번호 : "+getTagValue("ccbaMnm1",eElement));
+					System.out.println("문화재 번호 : "+getTagValue("ccbaMnm2",eElement));
+					System.out.println("문화재 번호 : "+getTagValue("ccsiName",eElement));
 					System.out.println();
 				}
 			}
